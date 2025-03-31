@@ -1,0 +1,351 @@
+/**
+ * Filter styles - Styling for the filters section and all filter components
+ */
+
+/* ===== FILTERS CONTAINER ===== */
+.filters-container {
+    background-color: var(--bg-card);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-subtle);
+    overflow: visible;
+    box-shadow: var(--shadow-soft);
+    margin-bottom: 2.5rem;
+    max-width: 100%;
+}
+
+.filters-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.filters-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+.filters-content {
+    padding: 1.5rem 1.5rem 1.5rem;
+    overflow: visible;
+}
+
+/* ===== SEARCH INPUT ===== */
+.search-wrapper {
+    position: relative;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.search-input {
+    width: 100%;
+    background-color: rgba(30, 30, 35, 0.6);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 0.9rem 1.25rem;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    outline: none;
+    transition: all var(--transition-normal);
+    letter-spacing: -0.01em;
+    box-shadow: var(--shadow-soft);
+}
+
+.search-input:focus {
+    background-color: rgba(40, 40, 45, 0.8);
+    border-color: var(--border-neon);
+    box-shadow: 0 0 0 1px var(--border-neon), var(--glow-subtle);
+}
+
+.search-input::placeholder {
+    color: var(--text-tertiary);
+}
+
+.search-icon {
+    position: absolute;
+    top: 50%;
+    right: 1.25rem;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    pointer-events: none;
+    transition: color var(--transition-fast);
+}
+
+.search-input:focus + .search-icon {
+    color: var(--ghost-white);
+}
+
+/* ===== FILTER CONTROLS ===== */
+.filter-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    position: relative;
+    z-index: 10;
+}
+
+/* ===== FILTER DROPDOWNS ===== */
+.filter-dropdown {
+    position: relative;
+}
+
+.control-button {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 0.75rem 1.25rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    transition: all var(--transition-normal);
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+}
+
+.control-button i {
+    margin-right: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.control-button:hover {
+    background-color: var(--bg-elevated);
+    border-color: var(--border-light);
+    color: var(--text-primary);
+    box-shadow: var(--glow-subtle);
+    transform: translateY(-2px);
+}
+
+/* Clear filters button */
+.clear-all-filters {
+    margin-left: auto;
+    background-color: rgba(40, 40, 45, 0.5);
+    border: 1px solid var(--border-subtle);
+}
+
+.clear-all-filters:hover {
+    background-color: rgba(50, 50, 55, 0.7);
+    color: var(--text-primary);
+    border-color: var(--border-light);
+}
+
+/* ===== DROPDOWN MENUS ===== */
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    background-color: var(--bg-card);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-medium), var(--glow-subtle);
+    z-index: 1000;
+    border: 1px solid var(--border-light);
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+.dropdown-menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Specific dropdown widths */
+.sort-options {
+    width: 200px;
+}
+
+.tags-options,
+.author-options {
+    width: 260px;
+    display: flex;
+    flex-direction: column;
+}
+
+.stars-options,
+.date-options {
+    width: 180px;
+}
+
+/* Dropdown item styles */
+.dropdown-item {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 0.85rem 1.25rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    letter-spacing: -0.01em;
+    transition: all var(--transition-fast);
+    border-bottom: 1px solid var(--border-subtle);
+    background: none;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    cursor: pointer;
+}
+
+.dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.dropdown-item:hover {
+    background-color: var(--bg-elevated);
+    color: var(--text-primary);
+}
+
+/* Search area within dropdowns */
+.dropdown-search {
+    padding: 0.75rem;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.dropdown-search input {
+    width: 100%;
+    background-color: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+    color: var(--text-primary);
+    outline: none;
+}
+
+.dropdown-search input::placeholder {
+    color: var(--text-tertiary);
+}
+
+/* Scrollable lists within dropdowns */
+.dropdown-list {
+    max-height: 230px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    padding: 0.5rem 0;
+}
+
+.dropdown-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+.dropdown-list::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-full);
+}
+
+.dropdown-list::-webkit-scrollbar-thumb {
+    background: var(--steel);
+    border-radius: var(--radius-full);
+}
+
+/* Tag and author options */
+.tag-option,
+.author-option {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    transition: all var(--transition-fast);
+    cursor: pointer;
+}
+
+.tag-option:hover,
+.author-option:hover {
+    background-color: var(--bg-elevated);
+    color: var(--text-primary);
+}
+
+.tag-option.active,
+.author-option.active {
+    color: var(--ghost-white);
+    background-color: rgba(220, 220, 255, 0.1);
+}
+
+/* Checkboxes for tags and authors */
+.tag-checkbox,
+.author-checkbox {
+    margin-right: 0.75rem;
+    width: 16px;
+    height: 16px;
+    border: 1px solid var(--border-light);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+}
+
+.tag-option.active .tag-checkbox,
+.author-option.active .author-checkbox {
+    background-color: var(--ghost-white);
+    border-color: var(--ghost-white);
+}
+
+.tag-option.active .tag-checkbox i,
+.author-option.active .author-checkbox i {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.tag-option .tag-checkbox i,
+.author-option .author-checkbox i {
+    color: var(--bg-primary);
+    font-size: 0.7rem;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all var(--transition-bounce);
+}
+
+.tag-count,
+.author-count {
+    margin-left: auto;
+    background-color: var(--bg-elevated);
+    border-radius: var(--radius-full);
+    padding: 0.15rem 0.5rem;
+    font-size: 0.7rem;
+    color: var(--text-tertiary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1023px) {
+    .filter-controls {
+        justify-content: flex-start;
+        gap: 0.5rem 0.75rem;
+    }
+    
+    .clear-all-filters {
+        margin-left: 0;
+        margin-top: 0.5rem;
+        width: auto;
+    }
+}
+
+@media (max-width: 767px) {
+    .filter-dropdown {
+        flex-basis: calc(50% - 0.5rem);
+    }
+    
+    .clear-all-filters {
+        flex-basis: 100%;
+        justify-content: center;
+    }
+    
+    .dropdown-menu {
+        max-width: calc(100vw - 3rem);
+    }
+}
+
+@media (max-width: 480px) {
+    .filter-dropdown {
+        flex-basis: 100%;
+    }
+}

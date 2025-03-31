@@ -1,0 +1,66 @@
+/**
+ * CSS Variables - Defines all theme variables used throughout the application
+ */
+
+ :root {
+    /* Base monochrome colors */
+    --pure-black: #000000;
+    --rich-black: #0a0a0a;
+    --dark-void: #121214;
+    --midnight: #1a1a1c;
+    --gunmetal: #2a2a2e;
+    --slate: #3a3a40;
+    --steel: #606066;
+    --silver: #9d9da3;
+    --platinum: #e0e0e6;
+    --ghost-white: #f5f5fa;
+    --pure-white: #ffffff;
+    
+    /* Neon effects - monochrome with different opacities */
+    --neon-glow: rgba(220, 220, 255, 0.8);
+    --subtle-glow: rgba(220, 220, 255, 0.3);
+    --soft-glow: rgba(220, 220, 255, 0.12);
+    --micro-glow: rgba(220, 220, 255, 0.04);
+    
+    /* Background colors */
+    --bg-primary: var(--pure-black);
+    --bg-secondary: var(--rich-black);
+    --bg-tertiary: var(--dark-void);
+    --bg-card: var(--midnight);
+    --bg-elevated: var(--gunmetal);
+    
+    /* Text colors */
+    --text-primary: var(--pure-white);
+    --text-secondary: var(--silver);
+    --text-tertiary: var(--steel);
+    --text-muted: rgba(255, 255, 255, 0.45);
+    
+    /* Border colors */
+    --border-subtle: rgba(255, 255, 255, 0.06);
+    --border-light: rgba(255, 255, 255, 0.12);
+    --border-neon: rgba(220, 220, 255, 0.2);
+    
+    /* Shadows */
+    --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.25);
+    --shadow-medium: 0 12px 30px rgba(0, 0, 0, 0.35);
+    --shadow-hard: 0 20px 40px rgba(0, 0, 0, 0.5);
+    --glow-neon: 0 0 20px rgba(220, 220, 255, 0.1);
+    --glow-subtle: 0 0 10px rgba(220, 220, 255, 0.05);
+    
+    /* Transitions */
+    --transition-fast: 0.2s cubic-bezier(0.3, 0, 0.4, 1);
+    --transition-normal: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-bounce: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    
+    /* Border radius */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --radius-xl: 20px;
+    --radius-full: 9999px;
+    
+    /* Layout */
+    --header-height: 60px;
+    --container-width: 1200px;
+    --content-padding: clamp(1.5rem, 5vw, 3rem);
+}

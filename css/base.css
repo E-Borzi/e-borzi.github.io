@@ -1,0 +1,132 @@
+/**
+ * Base styles - Reset and foundational styling
+ */
+
+ @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap');
+
+ /* Reset and base styles */
+ *, *::before, *::after {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+ }
+ 
+ html {
+     font-size: 16px;
+     scroll-behavior: smooth;
+ }
+ 
+ body {
+     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+     background-color: var(--bg-primary);
+     color: var(--text-primary);
+     line-height: 1.5;
+     overflow-x: hidden;
+     min-height: 100vh;
+     -webkit-font-smoothing: antialiased;
+     -moz-osx-font-smoothing: grayscale;
+ }
+
+ html, body {
+    overflow-x: hidden;
+    width: 100%;
+ }
+ 
+ a {
+     color: inherit;
+     text-decoration: none;
+ }
+ 
+ button {
+     font-family: inherit;
+     border: none;
+     background: none;
+     cursor: pointer;
+     color: inherit;
+ }
+ 
+ img {
+     max-width: 100%;
+     height: auto;
+     display: block;
+ }
+ 
+ /* Scrollbar styling */
+ ::-webkit-scrollbar {
+     width: 5px;
+     height: 5px;
+ }
+ 
+ ::-webkit-scrollbar-track {
+     background: var(--bg-secondary);
+ }
+ 
+ ::-webkit-scrollbar-thumb {
+     background: var(--steel);
+     border-radius: var(--radius-full);
+ }
+ 
+ ::-webkit-scrollbar-thumb:hover {
+     background: var(--silver);
+ }
+ 
+ /* Common utility classes */
+ .container {
+     width: 100%;
+     max-width: var(--container-width);
+     margin: 0 auto;
+     padding: 0 var(--content-padding);
+ }
+ 
+ .screen-reader-only {
+     position: absolute;
+     width: 1px;
+     height: 1px;
+     padding: 0;
+     margin: -1px;
+     overflow: hidden;
+     clip: rect(0, 0, 0, 0);
+     white-space: nowrap;
+     border-width: 0;
+ }
+ 
+ /* Grid background effect */
+ .grid-bg {
+     position: fixed;
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     pointer-events: none;
+     z-index: -1;
+     opacity: 0.05;
+     background-size: 80px 80px;
+     background-image: 
+         linear-gradient(to right, var(--steel) 1px, transparent 1px),
+         linear-gradient(to bottom, var(--steel) 1px, transparent 1px);
+     mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%);
+
+    animation: gradientshift 20s infinite alternate ease-in-out;
+    background-attachment: fixed;
+ }
+
+ @keyframes gradientshift {
+    0% {
+        transform: translate(0, 0);
+        opacity: 0.04;
+    }
+    50% {
+        opacity: 0.06;
+    }
+    100% {
+        transform: translate(10px, 10px);
+        opacity: 0.04;
+    }
+}
+ 
+ /* Animation delay classes */
+ .delay-100 { animation-delay: 0.1s; }
+ .delay-200 { animation-delay: 0.2s; }
+ .delay-300 { animation-delay: 0.3s; }
+ .delay-400 { animation-delay: 0.4s; }
+ .delay-500 { animation-delay: 0.5s; }

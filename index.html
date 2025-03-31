@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Borzi Repos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://via.placeholder.com/180/000000/ffffff?text=E">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://via.placeholder.com/32/000000/ffffff?text=E">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://via.placeholder.com/16/000000/ffffff?text=E">
+    <meta name="theme-color" content="#000000">
+    
+    <!-- Modular CSS files -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/filters.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+    <div class="grid-bg"></div>
+
+    <!-- Navigation bar with logo and links -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-text">E-Borzi</span>
+                <span class="logo-highlight">Repos</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero section with main title and subtitle -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title"><span class="accent">E-Borzi</span> Catalogue</h1>
+                <p class="hero-subtitle">
+                    Просто. Строго. Со стилем.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats section showing repository counts, contributors, and stars -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card" data-stat-index="0">
+                    <div class="stat-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="repositories-count">--</div>
+                        <div class="stat-label">Доступные репозитории</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card" data-stat-index="1">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="contributors-count">--</div>
+                        <div class="stat-label">Авторы</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card" data-stat-index="2">
+                    <div class="stat-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="stars-count">--</div>
+                        <div class="stat-label">Звезды</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main content section with filters and script listings -->
+    <section class="main-content">
+        <div class="container">
+            <!-- Compact filters section -->
+            <div class="filters-container" id="filters-section">
+                <div class="filters-header">
+                    <h3 class="filters-title">Фильтры</h3>
+                    <div class="cache-status-indicator" id="cache-indicator" title="Нажмите, чтобы изменить настройки кэша">
+                    </div>
+                </div>
+                
+                <div class="filters-content" id="filters-content">
+                    <!-- Search input field -->
+                    <div class="search-wrapper">
+                        <input 
+                            type="text" 
+                            id="search-input" 
+                            placeholder="Поиск скрипта, функции, автора..." 
+                            class="search-input"
+                        >
+                        <div class="search-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Filter controls in a compact layout -->
+                    <div class="filter-controls">
+                        <!-- Sort filter -->
+                        <div class="filter-dropdown sort-dropdown">
+                            <button class="control-button" id="sort-button">
+                                <i class="fas fa-sort-amount-down"></i>
+                                <span id="sort-text">Больше звезд</span>
+                            </button>
+                            <div class="dropdown-menu sort-options" id="sort-options">
+                                <button class="dropdown-item sort-option" data-sort="newest">Более новые</button>
+                                <button class="dropdown-item sort-option" data-sort="stars">Больше звезд</button>
+                                <button class="dropdown-item sort-option" data-sort="forks">Больше форков</button>
+                                <button class="dropdown-item sort-option" data-sort="updated">Последнее обновление</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Tags filter -->
+                        <div class="filter-dropdown tags-dropdown">
+                            <button class="control-button" id="tags-button">
+                                <i class="fas fa-tags"></i>
+                                <span id="tags-text">Все теги</span>
+                            </button>
+                            <div class="dropdown-menu tags-options" id="tags-options">
+                                <div class="dropdown-search tags-search">
+                                    <input type="text" id="tags-search-input" placeholder="Search tags...">
+                                </div>
+                                <div class="dropdown-list tags-list" id="tags-list">
+                                    <!-- Tags will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Author filter -->
+                        <div class="filter-dropdown author-dropdown">
+                            <button class="control-button" id="author-button">
+                                <i class="fas fa-user"></i>
+                                <span id="author-text">Все авторы</span>
+                            </button>
+                            <div class="dropdown-menu author-options" id="author-options">
+                                <div class="dropdown-search author-search">
+                                    <input type="text" id="author-search-input" placeholder="Search authors...">
+                                </div>
+                                <div class="dropdown-list author-list" id="author-list">
+                                    <!-- Authors will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Stars filter -->
+                        <div class="filter-dropdown stars-dropdown">
+                            <button class="control-button" id="stars-button">
+                                <i class="fas fa-star"></i>
+                                <span id="stars-text">Все звезды</span>
+                            </button>
+                            <div class="dropdown-menu stars-options" id="stars-options">
+                                <button class="dropdown-item stars-option" data-stars="0">Все звезды</button>
+                                <button class="dropdown-item stars-option" data-stars="5">5+ звезд</button>
+                                <button class="dropdown-item stars-option" data-stars="10">10+ звезд</button>
+                                <button class="dropdown-item stars-option" data-stars="20">20+ звезд</button>
+                                <button class="dropdown-item stars-option" data-stars="50">50+ звезд</button>
+                                <button class="dropdown-item stars-option" data-stars="100">100+ звезд</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Date filter -->
+                        <div class="filter-dropdown date-dropdown">
+                            <button class="control-button" id="date-button">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span id="date-text">Любое время</span>
+                            </button>
+                            <div class="dropdown-menu date-options" id="date-options">
+                                <button class="dropdown-item date-option" data-date="any">Любое время</button>
+                                <button class="dropdown-item date-option" data-date="week">Последняя неделя</button>
+                                <button class="dropdown-item date-option" data-date="month">Последний месяц</button>
+                                <button class="dropdown-item date-option" data-date="quarter">Последние 3 месяца</button>
+                                <button class="dropdown-item date-option" data-date="year">Последний год</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Clear filters button -->
+                        <button class="control-button clear-all-filters" id="clear-all-filters">
+                            <i class="fas fa-times"></i>
+                            <span>Отчистить фильтры</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Scripts listing container -->
+            <div class="scripts-container" id="scripts-container">
+                <!-- Will be populated by JavaScript -->
+            </div>
+            
+            <!-- Pagination controls -->
+            <div class="pagination" id="pagination"></div>
+            
+            <!-- Loading indicator -->
+            <div class="loading-container" id="loading-container">
+                <div class="loading-spinner"></div>
+                <div class="loading-text">Loading scripts...</div>
+            </div>
+            
+            <!-- Error message container -->
+            <div class="error-container" id="error-container">
+                <i class="fas fa-exclamation-circle error-icon"></i>
+                <h3 class="error-title">An error occurred</h3>
+                <p class="error-message" id="error-message"></p>
+                <button class="retry-button" id="retry-button">Try Again</button>
+            </div>
+            
+            <!-- No results message -->
+            <div class="no-results" id="no-results">
+                <i class="fas fa-search no-results-icon"></i>
+                <h3 class="no-results-title">No scripts found</h3>
+                <p class="no-results-message">Try adjusting your filters or search criteria.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer with links and information -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <span class="logo-text">E-Borzi</span>
+                        <span class="logo-highlight">Repos</span>
+                    </div>
+                    <p class="footer-description">
+                        Сайт создан, чтобы вы могли ознакомиться с творчеством E-Borzi.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://github.com/ElementoBorzi" target="_blank" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://discord.gg/kZGRnAHHvN" class="social-link">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4 class="footer-title">GitHub</h4>
+                    <ul class="footer-list">
+                        <li><a href="https://github.com/ElementoBorzi" target="_blank">ElementoBorzi</a></li>
+                        <li><a href="https://github.com/azerothcore/mod-eluna" target="_blank">AzerothCore Eluna</a></li>
+                        <li><a href="https://github.com/ElunaLuaEngine/Eluna" target="_blank">TrinityCore Eluna</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4 class="footer-title">Development</h4>
+                    <ul class="footer-list">
+                        <li><a href="#">Lua API</a></li>
+                        <li><a href="#">Tutorials</a></li>
+                        <li><a href="#">Contribute</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4 class="footer-title">Contact</h4>
+                    <ul class="footer-list">
+                        <li><a href="https://discord.gg/kZGRnAHHvN">Discord</a></li>
+                        <li><a href="https://discord.com/channels/817077195817353226/817077195817353229">Report a bug</a></li>
+                        <li><a href="#">About</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="copyright">
+                    © 2025 E-Borzi Repos. All rights reserved.
+                </p>
+                <div class="credits">
+                    <span>Designed with <i class="fa-solid fa-heart"></i> by the E-Borzi community</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Script card template -->
+    <template id="script-card-template">
+        <div class="script-card">
+            <div class="script-banner">
+                <div class="script-image-container"></div>
+                <div class="script-overlay"></div>
+                <div class="script-star-count">
+                    <i class="fas fa-star"></i>
+                    <span class="stars-value"></span>
+                </div>
+            </div>
+            
+            <div class="script-content">
+                <div class="script-header">
+                    <h3 class="script-title"></h3>
+                    <div class="script-meta">
+                        <span class="script-author"></span>
+                        <span class="separator">•</span>
+                        <span class="script-date"></span>
+                    </div>
+                </div>
+                
+                <p class="script-description"></p>
+                
+                <div class="script-metrics">
+                    <div class="metric">
+                        <div class="metric-value" data-metric="forks"></div>
+                        <div class="metric-label">Forks</div>
+                    </div>
+                    
+                    <div class="metric">
+                        <div class="metric-value" data-metric="issues"></div>
+                        <div class="metric-label">Issues</div>
+                    </div>
+                    
+                    <div class="metric">
+                        <div class="metric-value" data-metric="watchers"></div>
+                        <div class="metric-label">Watchers</div>
+                    </div>
+                </div>
+                
+                <div class="script-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <div class="progress-label"></div>
+                </div>
+                
+                <div class="script-tags"></div>
+                
+                <div class="script-actions">
+                    <a href="#" class="script-button primary" target="_blank">
+                        <i class="fas fa-download"></i> Download
+                    </a>
+                    <a href="#" class="script-button secondary" target="_blank">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Modular JavaScript files -->
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/toast.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
